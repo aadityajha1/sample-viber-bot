@@ -35,13 +35,13 @@ const createBot = (app) => {
           });
           bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
             console.log(message)
-            response.send(new TextMessage(`I have received the following message: ${message.text}`));
+            response.send(new TextMessage(`I have received the following message: ${message.text}`)).catch((err) => err);
           });
           // Bind the bot middleware to the app instance
           app.use('/viber/webhook' , bot.middleware());
           // Webhook will be used for receiving callbacks and user messages from Viber
           console.log(externalUrl)
-          bot.setWebhook(externalUrl + '/viber/webhook').catch(error => {
+          bot.setWebhook( '/viber/webhook').catch(error => {
             console.log('Error', error)
             logger.debug(`Error: The webhook ${externalUrl + '/viber/webhook'} cannot be set. ${error}`);
             // process.exit(1);
