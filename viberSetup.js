@@ -34,7 +34,8 @@ const createBot = (app) => {
             response.send(new TextMessage(`Hi ${response.userProfile.name}, my name is ${bot.name}!`));
           });
           bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
-            response.send(new TextMessage(`I have received the following message: ${message}`));
+            console.log(message)
+            response.send(new TextMessage(`I have received the following message: ${message.text}`));
           });
           // Bind the bot middleware to the app instance
           app.use('/viber/webhook' , bot.middleware());
