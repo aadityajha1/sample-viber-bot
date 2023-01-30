@@ -19,7 +19,7 @@ const createBot = (app) => {
         exitOnError: false,
         transports: [
         new (winston.transports.Console)(),
-        new (winston.transports.File)({ filename: 'logs/'+ newFilename + 'app.log'})]
+        new (winston.transports.File)({ filename: newFilename + 'app.log'})]
         });
     
         const bot = new ViberBot({
